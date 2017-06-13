@@ -1,34 +1,8 @@
-#import RPi.GPIO as GPIO
+from LightController import LightController
+from datetime import datetime
+import time
 
 led_pin = 22
-
-def setup():
-	#GPIO.setmode(GPIO.BGCM)
-	#GPIO.setup(led_pin, GPIO.OUT)
-
-class LedController(object):
-	"""A controller for LED lights..."""
-
-	def __init__(self, pin_number):
-		self.pin = pin_number
-
-	def __set_light__(self, state):
-        print #GPIO.output(self.pin, state ? GPIO.LOW : GPIO.HIGH)
-	
-	def update(self, time):
-		print "the time is something. Update leds"
-		print time
-
-class LedMock(object):
-    def __init__(self, pin_number):
-        self.pin = pin_number
-
-    def __set_light__(self, state):
-        print "GPIO.output(self.pin, state ? GPIO.LOW: GPIO.HIGH)"
-
-        def update(self, time):
-            print "the time is something. Update leds"
-            print time
 
 class GardenScheduler(object):
 	"""Scheduling garden tasks"""
@@ -46,17 +20,25 @@ class GardenScheduler(object):
 		
 	def start(self):
 		print "starting garden loop"
-		print "schedule update_all() to run every 5 min or so?"
+		try:
+			while True:
+				now = datetime.today()
+				self.update_all(now.hour)
+				time.sleep(self.interval)
+		except KeyboardInterrupt:
+			print "interrupted"
 
-	def set_on_interval(self, start, stop):
-		self.start = start
-		self.stop = stop
+	def set_update_interval(self, interval):
+		self.interval = interval
 
 
-def main(self):
-	setup()
-	led = LedMock(led_pin)
-	led.set_on_interval(700, 2100)
+def main():
+	led = LightController(led_pin)
+	led.set_active_time_interval(7, 23)
 	my_garden = GardenScheduler("garasjen")
-	my_garden.addDevice(led)
+	my_garden.set_update_interval(5)
+	my_garden.add_device(led)
 	my_garden.start()
+
+if __name__ == "__main__":
+	main()
