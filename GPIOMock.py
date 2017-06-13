@@ -1,5 +1,5 @@
 
-BGCM = "BGCM"
+BCM = "BCM"
 IN = "IN"
 OUT = "OUT"
 LOW = "LOW"

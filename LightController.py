@@ -6,7 +6,7 @@ except ImportError:
 class LightController(object):
     def __init__(self, pin_number):
         self.pin = pin_number
-        GPIO.setmode(GPIO.BGCM)
+        GPIO.setmode(GPIO.BCM)
         GPIO.setup(self.pin, GPIO.OUT)
 
     def __set_light_active__(self, state):
