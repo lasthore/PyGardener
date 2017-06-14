@@ -23,7 +23,7 @@ class GardenScheduler(object):
 		try:
 			while True:
 				now = datetime.today()
-				self.update_all(now.second)
+				self.update_all(now.hour)
 				time.sleep(self.interval)
 		except KeyboardInterrupt:
 			print "interrupted"
@@ -34,9 +34,9 @@ class GardenScheduler(object):
 
 def main():
 	led = LightController(led_pin)
-	led.set_active_time_interval(5, 35)
+	led.set_active_time_interval(7, 21)
 	my_garden = GardenScheduler("garasjen")
-	my_garden.set_update_interval(5)
+	my_garden.set_update_interval(300)
 	my_garden.add_device(led)
 	my_garden.start()
 

@@ -13,7 +13,6 @@ class LightController(object):
         GPIO.output(self.pin, GPIO.LOW if state else GPIO.HIGH)
 
     def update(self, time):
-        print "the time is " + str(time) + ". Updating..."
         self.__set_light_active__(True if time in range(self.start, self.stop) else False)
 
     def set_active_time_interval(self, start, stop):
