@@ -30,8 +30,8 @@ class GardenScheduler(object):
                 self.update_all(now.hour)
                 time.sleep(self.interval)
         except KeyboardInterrupt:
+            print "interrupted. Stopping all devices"
             self.stop_all_devices()
-            print "interrupted"
 
     def set_update_interval(self, interval):
         self.interval = interval
