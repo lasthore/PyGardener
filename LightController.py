@@ -15,7 +15,7 @@ class LightController(object):
     def update(self, time):
         self.__set_light_active__(True if time in range(self.start, self.stop) else False)
 
-    def stop(self):
+    def stop_device(self):
         GPIO.cleanup()
 
     def set_active_time_interval(self, start, stop):

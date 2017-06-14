@@ -20,7 +20,7 @@ class GardenScheduler(object):
 
     def stop_all_devices(self):
         for device in self.devices:
-            device.stop()
+            device.stop_device()
 
     def start(self):
         print "starting garden loop"
