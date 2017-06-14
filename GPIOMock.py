@@ -14,7 +14,10 @@ def setup(pin, direction):
     print "Setup pin [" + str(pin) + "] in direction [" + direction + "]"
     return None
 
-
 def output(pin, state):
     print "Set pin output " + str(pin) + ":" + str(state)
+    return None
+
+def cleanup():
+    print "cleaning up...."
     return None
