@@ -39,7 +39,7 @@ class GardenScheduler(object):
 
 def main():
     led = LightController(led_pin)
-    led.set_active_time_interval(7, 21)
+    led.set_active_time_interval(5, 22)
     my_garden = GardenScheduler("garasjen")
     my_garden.set_update_interval(300)
     my_garden.add_device(led)
